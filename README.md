@@ -99,7 +99,7 @@ To solve the MMR-BIP, mmrbipy provides five algorithms:
 mod.solve(algorithm='ids-b', timelimit=100)
 ```
 
-_Note: The implement are based on [gurobipy](https://pypi.org/project/gurobipy/)._
+_Note: For this project, we use [gurobipy](https://pypi.org/project/gurobipy/) as the solver to solve mixed integer programming problems._
 
 ## Results
 
