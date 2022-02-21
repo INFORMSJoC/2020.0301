@@ -1,104 +1,117 @@
 [![INFORMS Journal on Computing Logo](https://INFORMSJoC.github.io/logos/INFORMS_Journal_on_Computing_Header.jpg)](https://pubsonline.informs.org/journal/ijoc)
 
-# CacheTest
+# An iterated dual substitution approach for min-max binary integer programming
 
 This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
 The software and data in this repository are a snapshot of the software and data
-that were used in the research reported on in the paper 
-[This is a Template](https://doi.org/10.1287/ijoc.2019.0934) by T. Ralphs. 
-The snapshot is based on 
-[this SHA](https://github.com/tkralphs/JoCTemplate/commit/f7f30c63adbcb0811e5a133e1def696b74f3ba15) 
-in the development repository. 
+that were used in the research reported in the paper _An iterated dual substitution approach for min-max binary integer programming_ by W. Wu, M. Iori, S. Martello, and M. Yagiura. 
 
 **Important: This code is being developed on an on-going basis at 
-https://github.com/tkralphs/JoCTemplate. Please go there if you would like to
+https://github.com/ebeleta/iDS. Please go there if you would like to
 get a more recent version or would like support**
 
 ## Cite
 
-To cite this software, please cite the [paper](https://doi.org/10.1287/ijoc.2019.0934) using its DOI and the software itself, using the following DOI.
+To cite this software, please cite the [paper](https://doi.org/10.1287/ijoc.2020.0301) using its DOI and the software itself, using the following DOI.
 
 [![DOI](https://zenodo.org/badge/285853815.svg)](https://zenodo.org/badge/latestdoi/285853815)
 
 Below is the BibTex for citing this version of the code.
 
 ```
-@article{CacheTest,
-  author =        {T. Ralphs},
+@article{iDS2022,
+  author =        {W. Wu, M. Iori, S. Martello, and M. Yagiura},
   publisher =     {INFORMS Journal on Computing},
-  title =         {{CacheTest} Version v1.0},
-  year =          {2020},
-  doi =           {10.5281/zenodo.3977566},
-  url =           {https://github.com/INFORMSJoC/JoCTemplate},
+  title =         {{mmrbipy} Version v0.1.9},
+  year =          {2022},
+  doi =           {tbd},
+  url =           {https://github.com/INFORMSJoC/2020.0301},
 }  
 ```
 
-## Description
+## Installation
 
-The goal of this software is to demonstrate the effect of cache optimization.
+In a virtual environment with Python 3.6+, mmrbipy can be installed via
 
-## Building
-
-In Linux, to build the version that multiplies all elements of a vector by a
-constant (used to obtain the results in [Figure 1](results/mult-test.png) in the
-paper), stepping K elements at a time, execute the following commands.
-
-```
-make mult
+```bash
+pip install mmrbipy
 ```
 
-Alternatively, to build the version that sums the elements of a vector (used
-to obtain the results [Figure 2](results/sum-test.png) in the paper), stepping K
-elements at a time, do the following.
+## Using mmrbipy
 
+With a compatible instance file, mmrbipy solves the MMR-BIP from a Python script:
+
+```python
+from mmrbipy import Model
+
+# Generate a model from instance file
+mod = Model(problem='kp', filename='../data/KP/1-70-01-45-20')
+
+# Solve by iDS algorithm with best-scenario constraints
+mod.solve(algorithm='ids-b', timelimit=100)
+
+# Print results
+print("objective value: {}".format(mod.objval))
+print("time to best: {:.2f}".format(mod.ttb))
+
+# Write the results to file
+mod.write("result.txt")
 ```
-make clean
-make sum
+## Model
+To solve the MMR-BIP, mmrbipy provides four types of instance format:
+
+- min-max regret knapsack problem (*kp*)
+- min-max regret multidimensional knapsack problem (*mkp*)
+- min-max regret set covering problem (*scp*)
+- min-max regret generalized assignment problem (*gap*)
+
+See [data](data) directory for the details of each type.
+
+### Set problem type in constructor of _Model_ class
+```python
+# Generate a model from instance file
+mod = Model(problem='kp', filename='../data/KP/1-70-01-45-20')
 ```
 
-Be sure to make clean before building a different version of the code.
+_Note: Benchmark instances for_
+
+- _min-max regret knapsack problem_
+- _min-max regret multidimensional knapsack problem_
+- _min-max regret set covering problem_
+- _min-max regret generalized assignment problem_
+
+_are available in the [data](data) directory._
+
+## Algorithm
+
+To solve the MMR-BIP, mmrbipy provides five algorithms:
+- fixed scenario algorithm (*fix*);
+- branch-and-cut algorithm (*bc*);
+- dual substitution algorithm (*ds*);
+- iterated dual substitution algorithm with best-scenario constraints (*ids-b*);
+- iterated dual substitution algorithm with Hamming-distance constraints (*ids-h*).
+
+### Set algorithm type in _solve_ function
+```python
+# Solve by iDS algorithm with best-scenario constraints
+mod.solve(algorithm='ids-b', timelimit=100)
+```
+
+_Note: The implement are based on [gurobipy](https://pypi.org/project/gurobipy/)._
 
 ## Results
 
-Figure 1 in the paper shows the results of the multiplication test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
-
-![Figure 1](results/mult-test.png)
-
-Figure 2 in the paper shows the results of the sum test with different
-values of K using `gcc` 7.5 on an Ubuntu Linux box.
-
-![Figure 1](results/sum-test.png)
-
-## Replicating
-
-To replicate the results in [Figure 1](results/mult-test), do either
-
-```
-make mult-test
-```
-or
-```
-python test.py mult
-```
-To replicate the results in [Figure 2](results/sum-test), do either
-
-```
-make sum-test
-```
-or
-```
-python test.py sum
-```
+Detailed results for all the tested instances are shown in [result](results/results.pdf) pdf.
+We used Gurobi Optimizer version 8.1 to solve the mixed integer linear programming problems.
 
 ## Ongoing Development
 
 This code is being developed on an on-going basis at the author's
-[Github site](https://github.com/tkralphs/JoCTemplate).
+[Github site](https://github.com/ebeleta/iDS).
 
 ## Support
 
 For support in using this software, submit an
-[issue](https://github.com/tkralphs/JoCTemplate/issues/new).
+[issue](https://github.com/ebeleta/iDS/issues/new).
