@@ -26,7 +26,7 @@ Below is the BibTex for citing this version of the code.
   publisher =     {INFORMS Journal on Computing},
   title =         {{mmrbipy} Version v0.1.9},
   year =          {2022},
-  doi =           {tbd},
+  doi =           {10.5281/zenodo.6227712},
   url =           {https://github.com/INFORMSJoC/2020.0301},
 }  
 ```
