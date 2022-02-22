@@ -16,7 +16,7 @@ get a more recent version or would like support**
 
 To cite this software, please cite the [paper](https://doi.org/10.1287/ijoc.2020.0301) using its DOI and the software itself, using the following DOI.
 
-[![DOI](https://zenodo.org/badge/285853815.svg)](https://zenodo.org/badge/latestdoi/285853815)
+
 
 Below is the BibTex for citing this version of the code.
 
