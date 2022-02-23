@@ -24,7 +24,7 @@ Below is the BibTex for citing this version of the code.
 @article{iDS2022,
   author =        {W. Wu, M. Iori, S. Martello, and M. Yagiura},
   publisher =     {INFORMS Journal on Computing},
-  title =         {{mmrbipy} Version v0.1.9},
+  title =         {{mmrbipy} Version v2020.0301},
   year =          {2022},
   doi =           {10.5281/zenodo.6227712},
   url =           {https://github.com/INFORMSJoC/2020.0301},
