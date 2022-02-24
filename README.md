@@ -27,6 +27,7 @@ Below is the BibTex for citing this version of the code.
   title =         {{mmrbipy} Version v2020.0301},
   year =          {2022},
   doi =           {10.5281/zenodo.6227712},
+  [![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.6227712.svg)](https://doi.org/10.5281/zenodo.6227712)
   url =           {https://github.com/INFORMSJoC/2020.0301},
 }  
 ```
