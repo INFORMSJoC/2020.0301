@@ -1,17 +1,17 @@
 # Script for generating results from paper
 
-Run `test_all.py` or `test_single.py` to replicate the results for an instance of the following problem  
-- min-max binary integer programming problem (*bip*)
-- min-max regret knapsack problem (*kp*)
-- min-max regret multidimensional knapsack problem (*mkp*)
-- min-max regret set covering problem (*scp*)
+Run `test_all.py` or `test_single.py` to replicate results for the following problem  
+- min-max binary integer programming problem (*bip*),
+- min-max regret knapsack problem (*kp*),
+- min-max regret multidimensional knapsack problem (*mkp*),
+- min-max regret set covering problem (*scp*),
 - min-max regret generalized assignment problem (*gap*)
 
-by algorithms 
-- fixed scenario algorithm (*fix*);
-- branch-and-cut algorithm (*bc*);
-- dual substitution algorithm (*ds*);
-- iterated dual substitution algorithm with best-scenario constraints (*ids-b*);
+by using algorithms 
+- fixed scenario algorithm (*fix*),
+- branch-and-cut algorithm (*bc*),
+- dual substitution algorithm (*ds*),
+- iterated dual substitution algorithm with best-scenario constraints (*ids-b*),
 - iterated dual substitution algorithm with Hamming-distance constraints (*ids-h*).
 
 ## Examples
@@ -31,7 +31,7 @@ python test_all.py -p scp -a bc -t 600
 The results will be written to `../results/rst_SCP_bc.csv`.
 ___
 
-Run all the algorithms to solve all instances of all the problems with a 3600-second time limit:
+Run all the algorithms to solve all the instances of all the problems with a 3600-second time limit:
 
 ```bash
 python test_all.py
@@ -39,5 +39,5 @@ python test_all.py
 All the results will be written to `../results/` as csv files.
 
 ## Requirements
-- _argparse_ and _mmrbipy_ modules are installed.
-- For running `test_all.py`, `../data/` directory should exist.
+- Packages _argparse_ and _mmrbipy_ are installed.
+- For running `test_all.py`, directory `../data/` should exist.
