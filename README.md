@@ -82,7 +82,7 @@ _Note: Benchmark instances for_
 - _min-max regret set covering problem_,
 - _min-max regret generalized assignment problem_
 
-_are available in the [data](data) directory._
+_are available in [data](data) directory._
 
 ## Algorithms
 
