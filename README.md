@@ -67,7 +67,7 @@ To solve the MMR-BIP, mmrbipy provides four types of instance formats:
 - min-max regret set covering problem (*scp*)
 - min-max regret generalized assignment problem (*gap*)
 
-See [data](data) directory for the details of each type.
+See [data](data) directory for details.
 
 ### Set problem type in constructor of _Model_ class
 ```python
