@@ -1,2 +1,2 @@
 # Source
-Python module for solving min-max regret binary programming problem.
+A Python package for solving min-max regret binary programming problems.

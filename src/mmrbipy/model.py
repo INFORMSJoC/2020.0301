@@ -37,6 +37,8 @@ def lazy_cut(model, where):
 
     # Solve BIP under the worst-case scenario
     remain_time = obj.timelimit-model.cbGet(GRB.Callback.RUNTIME)
+    if remain_time <= 0:
+        return
     res = obj.solve_bip(c=c_wst, timelimit=remain_time)
 
     if obj.sense == GRB.MAXIMIZE and res['obj_bd'] > r_sol + EPSN:
@@ -329,9 +331,11 @@ class Model():
         # Store results
         if model.status == GRB.Status.OPTIMAL or model.status == GRB.Status.TIME_LIMIT:
             self.lb = int(model.objBound + 1 - EPSN)
-            self.objval = int(model.objVal + EPSN)
+            # self.objval = int(model.objVal + EPSN)
             self.ttb = model._ttb
             self.sol = {j: 1 if x[j].x > 0.5 else 0 for j in x}
+            # Evaluate the obtained solution under its worst-case scenario
+            self.objval = self.evaluate(self.sol)
 
     def evaluate(self, sol: dict) -> int:
         """Calculate regret for a solution
