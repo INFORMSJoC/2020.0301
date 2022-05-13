@@ -6,7 +6,7 @@ This archive is distributed in association with the [INFORMS Journal on
 Computing](https://pubsonline.informs.org/journal/ijoc) under the [MIT License](LICENSE).
 
 The software and data in this repository are a snapshot of the software and data
-that were used in the research reported in the paper _An iterated dual substitution approach for min-max binary integer programming_ by W. Wu, M. Iori, S. Martello, and M. Yagiura. 
+that were used in the research reported in the paper [An iterated dual substitution approach for min-max binary integer programming](https://doi.org/10.1287/ijoc.2022.1189) by W. Wu, M. Iori, S. Martello, and M. Yagiura. 
 
 **Important: This code is being developed on an on-going basis at 
 https://github.com/ebeleta/iDS. Please go there if you would like to
